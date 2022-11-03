@@ -3,6 +3,7 @@ package com.example.luzariza_oscarquispe_comp304_assign4;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,5 +25,10 @@ public class MainActivity extends AppCompatActivity {
             login_btn.setVisibility(View.VISIBLE);
             update_btn.setVisibility(View.INVISIBLE);
         }
+
+    }
+    public void goToLogin(View view){
+        Intent login = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(login);
     }
 }
