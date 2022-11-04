@@ -61,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
         Intent login = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(login);
     }
+
+    public void goToMovie(View view){
+        if (Objects.equals(session, "True")) {
+            Intent login = new Intent(MainActivity.this, TicketActivity.class);
+            startActivity(login);
+        } else {
+            Toast.makeText(MainActivity.this, "LOGIN FIRST", Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void signOut(View view){
         SharedPreferences myPref=getSharedPreferences("PrefFile", 0);
         SharedPreferences.Editor editor = myPref.edit();

@@ -78,19 +78,4 @@ public class UserRepository {
             }
         }).start();
     }
-/*
-    private LiveData<List<String>> getPasswordAsync(final String email) {
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    password = userDao.getPasswordByEmail(email);
-                } catch (Exception e) {
-                    insertResult.postValue(0);
-                }
-            }
-        }).start();
-        return password;
-    }*/
 }
