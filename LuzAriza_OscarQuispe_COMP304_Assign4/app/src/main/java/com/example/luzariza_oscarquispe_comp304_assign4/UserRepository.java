@@ -12,6 +12,7 @@ import java.util.List;
 public class UserRepository {
     private final UserDao userDao;
     private MutableLiveData<Integer> insertResult = new MutableLiveData<>();
+    private MutableLiveData<Integer> updateResult = new MutableLiveData<>();
     private LiveData<List<User>> usersList;
     private LiveData<List<User>> password;
 
@@ -36,9 +37,16 @@ public class UserRepository {
     public void insert(User user) {
         insertAsync(user);
     }
+    //
+    public void update(User user) {
+        updateAsync(user);
+    }
     // returns insert results as LiveData object
     public LiveData<Integer> getInsertResult() {
         return insertResult;
+    }
+    public LiveData<Integer> getUpdateResult() {
+        return updateResult;
     }
 
     private  void insertAsync(final User user) {
@@ -51,6 +59,21 @@ public class UserRepository {
                     insertResult.postValue(1);
                 } catch (Exception e) {
                     insertResult.postValue(0);
+                }
+            }
+        }).start();
+    }
+
+    private  void updateAsync(final User user) {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    userDao.update(user);
+                    updateResult.postValue(1);
+                } catch (Exception e) {
+                    updateResult.postValue(0);
                 }
             }
         }).start();

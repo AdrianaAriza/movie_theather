@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                          editor.putString("session", "True");
                          editor.putString("userName", user.getName());
                          editor.putInt("custId", user.getCustId());
+                         editor.putString("email", user.getEmail());
                          editor.commit();
                          finish();
                      } else {

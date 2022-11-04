@@ -68,5 +68,9 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
         onResume();
     }
+    public void goToUpdate(View view){
+        Intent update = new Intent(MainActivity.this, UpdateActivity.class);
+        startActivity(update);
+    }
 
 }

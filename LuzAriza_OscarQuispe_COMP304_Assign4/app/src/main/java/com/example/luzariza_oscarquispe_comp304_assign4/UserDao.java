@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface UserDao {
     @Query("select * from User where email = :email")
     LiveData<List<User>>getPasswordByEmail(String email);
 
+    @Update
+    void update(User user);
 }

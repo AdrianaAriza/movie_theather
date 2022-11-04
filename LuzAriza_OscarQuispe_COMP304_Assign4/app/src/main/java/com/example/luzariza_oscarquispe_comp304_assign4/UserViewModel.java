@@ -16,20 +16,30 @@ public class UserViewModel extends AndroidViewModel {
     private androidx.lifecycle.LiveData<Integer> insertResult;
     private androidx.lifecycle.LiveData<List<User>> allUsers;
     private androidx.lifecycle.LiveData<List<User>> password;
+    private androidx.lifecycle.LiveData<Integer> updateResult;
     //
     public UserViewModel(@NonNull Application application) {
         super(application);
         userRepository = new UserRepository(application);
         insertResult = userRepository.getInsertResult();
+        updateResult = userRepository.getUpdateResult();
         allUsers = userRepository.getAllUsers();
     }
     //calls repository to insert a user
     public void insert(User user) {
         userRepository.insert(user);
     }
+    //
+    public void update(User user) {
+        userRepository.update(user);
+    }
     //gets insert results as LiveData object
     public androidx.lifecycle.LiveData<Integer> getInsertResult() {
         return insertResult;
+    }
+    //
+    public androidx.lifecycle.LiveData<Integer> getUpdateResult() {
+        return updateResult;
     }
     //returns query results as live data object
     LiveData<List<User>> getAllUsers() { return allUsers; }
