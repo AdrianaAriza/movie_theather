@@ -1,6 +1,7 @@
 package com.example.luzariza_oscarquispe_comp304_assign4;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -14,6 +15,7 @@ public class UserViewModel extends AndroidViewModel {
     private UserRepository userRepository;
     private androidx.lifecycle.LiveData<Integer> insertResult;
     private androidx.lifecycle.LiveData<List<User>> allUsers;
+    private androidx.lifecycle.LiveData<List<User>> password;
     //
     public UserViewModel(@NonNull Application application) {
         super(application);
@@ -32,4 +34,8 @@ public class UserViewModel extends AndroidViewModel {
     //returns query results as live data object
     LiveData<List<User>> getAllUsers() { return allUsers; }
 
+    LiveData<List<User>> getPasswordByEmail(String email){
+        password = userRepository.getPasswordByEmail(email);
+        return password;
+    }
 }

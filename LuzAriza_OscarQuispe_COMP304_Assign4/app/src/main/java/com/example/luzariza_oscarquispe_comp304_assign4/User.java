@@ -1,6 +1,7 @@
 package com.example.luzariza_oscarquispe_comp304_assign4;
 
 import androidx.room.Entity;
+import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -15,9 +16,10 @@ public class User {
     private String city;
     private String postalCode;
     private String email;
-    private Boolean status;
+    private String phone;
 
-    public User(String password, String firstName, String lastName, String address, String city, String postalCode, String email, Boolean status) {
+
+    public User(String password, String firstName, String lastName, String address, String city, String postalCode, String email, String phone) {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,7 +27,7 @@ public class User {
         this.city = city;
         this.postalCode = postalCode;
         this.email = email;
-        this.status = status;
+        this.phone = phone;
     }
 
 
@@ -98,11 +100,11 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

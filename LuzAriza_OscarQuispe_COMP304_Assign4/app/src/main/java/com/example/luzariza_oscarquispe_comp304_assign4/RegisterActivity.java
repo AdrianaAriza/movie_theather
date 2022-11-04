@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.awt.font.NumericShaper;
 import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -41,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
         userViewModel.getInsertResult().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer result) {
@@ -68,8 +70,8 @@ public class RegisterActivity extends AppCompatActivity {
         String pCode = postalCode.getText().toString();
         email = findViewById(R.id.email);
         String mail = email.getText().toString();
-        phone = findViewById(R.id.email);
-        String phoneNumber = phone.getText().toString();
+        phone = findViewById(R.id.phone);
+        String phoneNumber =  phone.getText().toString();
         password = findViewById(R.id.password);
         String pwd = password.getText().toString();
         passwordConfirmation = findViewById(R.id.passwordConfirmation);
@@ -79,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                 || !pwd.equals(""))
         {
             if(pwd.equals(pwdConfirmation)){
-                user = new User(pwd, fName, lName, add, ct, pCode, mail, false);
+                user = new User(pwd, fName, lName, add, ct, pCode, mail, phoneNumber);
                 userViewModel.insert(user);
             }else
                 Toast.makeText(RegisterActivity.this, "Passwords DO NOT match", Toast.LENGTH_LONG).show();
