@@ -11,13 +11,15 @@ import com.example.luzariza_oscarquispe_comp304_assign4.User;
 import com.example.luzariza_oscarquispe_comp304_assign4.UserDao;
 
 //Room database class
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class, Movie.class, Ticket.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     //
     private static volatile AppDatabase INSTANCE;
     private static final String DATABASE_NAME = "MovieTheaterDB";
 
     public abstract UserDao userDao();
+    public abstract MovieDao movieDao();
+    public abstract TicketDao ticketDao();
 
     //
     public static synchronized AppDatabase getInstance(Context context) {
