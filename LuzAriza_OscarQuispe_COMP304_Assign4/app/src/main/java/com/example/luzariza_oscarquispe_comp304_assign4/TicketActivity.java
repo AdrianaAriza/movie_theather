@@ -137,29 +137,32 @@ public class TicketActivity extends AppCompatActivity {
     }
 
     public void onClickPrint(View view) {
-        nTiAd = findViewById(R.id.numadult);
-        nTiCh = findViewById(R.id.numchild);
-        numtick= Integer.parseInt(nTiAd.getText().toString())+Integer.parseInt(nTiCh.getText().toString());
-        ticket.setNumbOfTickets(numtick);
-        tPrice = (Integer.parseInt(nTiAd.getText().toString())*7.99)+(Integer.parseInt(nTiCh.getText().toString())*10.99);
-        ticket.setPrice(tPrice);
-        SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        String strprice=tPrice+"";
-        editor.putString("Price", strprice);
-        editor.commit();
-        ticket.setCustId(user.getCustId());
-        ticket.setMovieId(movie.getMovieId());
-        ticketViewModel.insert(ticket);
-        Intent intent = new Intent(this, CheckoutActivity.class);
-        startActivity(intent);
+        try {
+            nTiAd = findViewById(R.id.numadult);
+            nTiCh = findViewById(R.id.numchild);
+            numtick= Integer.parseInt(nTiAd.getText().toString())+Integer.parseInt(nTiCh.getText().toString());
+            ticket.setNumbOfTickets(numtick);
+            tPrice = (Integer.parseInt(nTiAd.getText().toString())*7.99)+(Integer.parseInt(nTiCh.getText().toString())*10.99);
+            ticket.setPrice(tPrice);
+            SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            String strprice=tPrice+"";
+            editor.putString("Price", strprice);
+            editor.commit();
+            ticket.setCustId(user.getCustId());
+            ticket.setMovieId(movie.getMovieId());
+            ticketViewModel.insert(ticket);
+            Intent intent = new Intent(this, CheckoutActivity.class);
+            startActivity(intent);
+        }catch (Exception e) {
+            Toast.makeText(this, "Missing Selection", Toast.LENGTH_LONG).show();
+        }
     }
     public void onClickCancel(View view) {
         SharedPreferences myPref=getSharedPreferences("PrefFile", 0);
         SharedPreferences.Editor editor = myPref.edit();
         editor.putString("session", "True");
         editor.commit();
-        Intent intent = new Intent(this, CheckoutActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
