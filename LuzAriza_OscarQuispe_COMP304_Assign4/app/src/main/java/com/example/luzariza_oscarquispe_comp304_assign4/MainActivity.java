@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToMovie(View view){
         if (Objects.equals(session, "True")) {
-            Intent login = new Intent(MainActivity.this, TicketActivity.class);
-            startActivity(login);
+            Intent book = new Intent(MainActivity.this, TicketActivity.class);
+            startActivity(book);
         } else {
             Toast.makeText(MainActivity.this, "LOGIN FIRST", Toast.LENGTH_LONG).show();
         }

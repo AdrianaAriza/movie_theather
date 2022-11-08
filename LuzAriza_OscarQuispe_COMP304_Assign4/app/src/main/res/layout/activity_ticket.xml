@@ -6,4 +6,151 @@
     android:layout_height="match_parent"
     tools:context=".TicketActivity">
 
+    <Spinner
+        android:id="@+id/m_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="60dp"
+        android:entries="@array/lmovies"
+        android:minHeight="48dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rg2"
+        android:layout_width="174dp"
+        android:layout_height="212dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_spinner">
+
+        <RadioButton
+            android:id="@+id/rb2t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stime1" />
+
+        <RadioButton
+            android:id="@+id/rb2t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stime2" />
+
+        <RadioButton
+            android:id="@+id/rb2t3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stime3" />
+
+        <RadioButton
+            android:id="@+id/rb2t4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stime4" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/numadult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:hint="@string/snuti"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ticketsadult"
+        app:layout_constraintStart_toEndOf="@+id/ticketsadult"
+        app:layout_constraintTop_toTopOf="@+id/ticketsadult"
+        app:layout_constraintVertical_bias="0.333" />
+    <CheckBox
+        android:id="@+id/ticketsadult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/stta"
+        app:layout_constraintBottom_toTopOf="@+id/ticketschild"
+        app:layout_constraintStart_toStartOf="@+id/ticketschild" />
+
+    <EditText
+        android:id="@+id/numchild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:hint="@string/snuti"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ticketschild"
+        app:layout_constraintStart_toEndOf="@+id/ticketschild"
+        app:layout_constraintTop_toTopOf="@+id/ticketschild"
+        app:layout_constraintVertical_bias="0.0" />
+    <CheckBox
+        android:id="@+id/ticketschild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/sttc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <TextView
+        android:id="@+id/vp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="272dp"
+        android:text="Adult: $10.99 - Children: $7.99"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="86dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="304dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CalendarView
+        android:id="@+id/calendView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnPrint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="392dp"
+        android:onClick="onClickPrint"
+        android:text="Print"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketschild" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="392dp"
+        android:onClick="onClickCancel"
+        android:text="Cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ticketschild" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

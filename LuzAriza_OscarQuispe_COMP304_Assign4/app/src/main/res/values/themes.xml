@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="display_information">
+        <item name="android:textColor"> @color/diColor</item>
+        <item name="android:textSize">@dimen/sinfo</item>
+        <item name="android:textStyle">italic</item>
+    </style>
 </resources>

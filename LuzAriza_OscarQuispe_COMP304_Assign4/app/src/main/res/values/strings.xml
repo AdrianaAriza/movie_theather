@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">LuzAriza_OscarQuispe_COMP304_Assign4</string>
+
+    <string name="stime1">12:50pm</string>
+    <string name="stime2">2:15pm</string>
+    <string name="stime3">4:45pm</string>
+    <string name="stime4">6:50pm</string>
+
+    <string name="stta">Adults</string>
+    <string name="sttc">Children</string>
+    <string name="snuti"># of tickets</string>
+
+    <string-array name="lmovies">
+        <item>Select a Movie</item>
+        <item>End Game Avengers</item>
+        <item>Dragon Ball Z</item>
+        <item>Impossible Mission 6</item>
+        <item>Space Jam</item>
+    </string-array>
+
+    <dimen name="sinfo">20sp</dimen>
+
 </resources>
