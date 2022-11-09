@@ -2,8 +2,10 @@ package com.example.luzariza_oscarquispe_comp304_assign4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class CheckoutActivity extends AppCompatActivity {
@@ -38,5 +40,10 @@ public class CheckoutActivity extends AppCompatActivity {
         String prict=myPref.getString("Price","");
         TextView txtView4=findViewById(R.id.pt);
         txtView4.setText("Price: $" +prict);
+    }
+    public void backToMain(View view){
+        Intent main = new Intent(CheckoutActivity.this, MainActivity.class);
+        main.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(main, 0);
     }
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onResume() {
+        Log.d("onResume", "onResume");
         super.onResume();
         login_btn = findViewById(R.id.login);
         update_btn = findViewById(R.id.update_profile);
@@ -68,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(book);
         } else {
             Toast.makeText(MainActivity.this, "LOGIN FIRST", Toast.LENGTH_LONG).show();
+            Intent login = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(login);
         }
     }
 
