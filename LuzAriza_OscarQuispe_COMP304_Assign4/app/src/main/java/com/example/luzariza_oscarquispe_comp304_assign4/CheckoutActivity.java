@@ -17,7 +17,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
         //retrieving from shared preferences
         SharedPreferences myPref = getSharedPreferences("PrefFile", 0);
-        String fname = myPref.getString("userName","");
+        String fname = myPref.getString("firstName","");
         TextView tView1 = (TextView)findViewById(R.id.fn);
         tView1.setText("Customer Name: " + fname);
 

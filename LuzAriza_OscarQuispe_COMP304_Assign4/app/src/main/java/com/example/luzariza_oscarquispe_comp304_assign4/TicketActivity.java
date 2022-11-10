@@ -156,7 +156,7 @@ public class TicketActivity extends AppCompatActivity {
             String strprice=tPrice+"";
             editor.putString("Price", strprice);
             editor.commit();
-            ticket.setCustId(user.getCustId());
+            //ticket.setCustId(user.getCustId());
             ticket.setMovieId(movie.getMovieId());
             ticket.setMovieName(movie.getMovieName());
             ticket.setCustId(userId);
