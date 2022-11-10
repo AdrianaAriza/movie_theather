@@ -133,7 +133,7 @@ public class TicketActivity extends AppCompatActivity {
         CalendView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
-                String showDa = ""+year+(month+1)+day;
+                String showDa = ""+year + "/" + (month+1) + "/"+day;
                 ticket.setShowDate(showDa);
                 SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();

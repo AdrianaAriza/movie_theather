@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">LuzAriza_OscarQuispe_COMP304_Assign4</string>
 
-    <string name="stime1">12:50pm</string>
-    <string name="stime2">2:15pm</string>
-    <string name="stime3">4:45pm</string>
-    <string name="stime4">6:50pm</string>
+    <string name="stime1">11:50</string>
+    <string name="stime2">14:15</string>
+    <string name="stime3">16:45</string>
+    <string name="stime4">18:50</string>
 
     <string name="stta">Adults</string>
     <string name="sttc">Children</string>
