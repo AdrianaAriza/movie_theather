@@ -11,6 +11,7 @@ public class MovieRepository {
     private final MovieDao movieDao;
     private MutableLiveData<Integer> insertResult = new MutableLiveData<>();
     private LiveData<List<Movie>> moviesList;
+    private LiveData<List<Movie>> movie;
     //
     public MovieRepository(Context context) {
         //create a database object
@@ -23,6 +24,10 @@ public class MovieRepository {
     // returns query results as LiveData object
     LiveData<List<Movie>> getAllMovies() {
         return moviesList;
+    }
+    //
+    public LiveData<List<Movie>> getMovieByName(String name) {
+        return movieDao.getMovieByName(name);
     }
     //inserts a movie asynchronously
     public void insert(Movie movie) {

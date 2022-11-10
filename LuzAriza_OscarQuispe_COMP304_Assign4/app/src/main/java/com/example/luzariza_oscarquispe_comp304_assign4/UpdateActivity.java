@@ -20,9 +20,6 @@ import java.util.Objects;
 public class UpdateActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
-    private Button btnInsert;
-    private EditText editTextName;
-    private TextView textViewDisplay;
 
     //New code
     TextView firstName;
@@ -34,67 +31,91 @@ public class UpdateActivity extends AppCompatActivity {
     TextView phone;
     TextView password;
     TextView passwordConfirmation;
-    Button btnRegister;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
+        firstName = findViewById(R.id.firstName);
+        firstName.setText(preferences.getString("firstName", ""));
+        lastName = findViewById(R.id.lastName);
+        lastName.setText(preferences.getString("lastName", ""));
+        address = findViewById(R.id.address);
+        address.setText(preferences.getString("address", ""));
+        city = findViewById(R.id.city);
+        city.setText(preferences.getString("city", ""));
+        postalCode = findViewById(R.id.code);
+        postalCode.setText(preferences.getString("postalCode", ""));
+        email = findViewById(R.id.email);
+        email.setText(preferences.getString("email", ""));
+        phone = findViewById(R.id.phone);
+        phone.setText(preferences.getString("phone", ""));
+        password = findViewById(R.id.password);
+        password.setText(preferences.getString("password", ""));
+        passwordConfirmation = findViewById(R.id.passwordConfirmation);
+        passwordConfirmation.setText(preferences.getString("password", ""));
     }
 
     public void update(View view) {
         SharedPreferences myPref = getSharedPreferences("PrefFile", 0);
         String emailText = myPref.getString("email", "");
 
-        userViewModel.getPasswordByEmail(emailText).observe(this, new Observer<List<User>>() {
+        userViewModel.getUserByEmail(emailText).observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(@Nullable List<User> userList) {
                 SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 try {
                     User user = userList.get(0);
-                    firstName = findViewById(R.id.firstName);
+
                     String fName = firstName.getText().toString();
-                    if (!fName.equals("")) {
-                        user.setFirstName(fName);
-                        editor.putString("userName", fName);
-                        editor.commit();
-                    }
-                    lastName = findViewById(R.id.lastName);
+                    user.setFirstName(fName);
+                    editor.putString("firstName", fName);
+                    editor.commit();
+
+
                     String lName = lastName.getText().toString();
-                    if (!lName.equals("")) {
-                        user.setLastName(lName);
-                    }
-                    address = findViewById(R.id.address);
+                    user.setLastName(lName);
+                    editor.putString("lastName", lName);
+                    editor.commit();
+
                     String add = address.getText().toString();
-                    if (!add.equals("")) {
-                        user.setAddress(add);
-                    }
-                    city = findViewById(R.id.city);
+                    user.setAddress(add);
+                    editor.putString("address", add);
+                    editor.commit();
+
                     String ct = city.getText().toString();
-                    if (!ct.equals("")) {
-                        user.setCity(ct);
-                    }
-                    postalCode = findViewById(R.id.code);
+                    user.setCity(ct);
+                    editor.putString("city", ct);
+                    editor.commit();
+
                     String pCode = postalCode.getText().toString();
-                    if (!pCode.equals("")) {
-                        user.setPostalCode(pCode);
-                    }
-                    email = findViewById(R.id.email);
+                    user.setPostalCode(pCode);
+                    editor.putString("postalCode", pCode);
+                    editor.commit();
+
                     String mail = email.getText().toString();
-                    if (!mail.equals("")) {
-                        user.setEmail(mail);
-                        editor.putString("email", mail);
-                        editor.commit();
-                    }
-                    phone = findViewById(R.id.phone);
+                    user.setEmail(mail);
+                    editor.putString("email", mail);
+                    editor.commit();
+
                     String phoneNumber = phone.getText().toString();
-                    if (!phoneNumber.equals("")) {
-                        user.setPhone(phoneNumber);
+                    user.setPhone(phoneNumber);
+                    editor.putString("phone", phoneNumber);
+                    editor.commit();
+
+                    String pass = password.getText().toString();
+                    String passConf = passwordConfirmation.getText().toString();
+                    if(pass.equals(passConf)){
+                        user.setPassword(pass);
+                        editor.putString("password", pass);
+                        editor.commit();
+                        userViewModel.update(user);
+                    }else{
+                        Toast.makeText(UpdateActivity.this, "PASSWORDS DON'T MATCH", Toast.LENGTH_LONG).show();
                     }
-                    userViewModel.update(user);
                 } catch (Exception e) {
                     Toast.makeText(UpdateActivity.this, "USER NOT FOUND", Toast.LENGTH_LONG).show();
                 }

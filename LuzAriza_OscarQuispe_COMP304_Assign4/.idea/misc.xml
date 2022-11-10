@@ -8,8 +8,9 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_movie.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_shows_tickets.xml" value="0.11927083333333334" />
         <entry key="app/src/main/res/layout/activity_ticket.xml" value="0.13177083333333334" />
-        <entry key="app/src/main/res/layout/activity_update.xml" value="0.13177083333333334" />
+        <entry key="app/src/main/res/layout/activity_update.xml" value="0.1" />
       </map>
     </option>
   </component>

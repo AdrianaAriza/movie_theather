@@ -12,6 +12,9 @@ public interface MovieDao {
     @Insert
     void insert (Movie movie);
 
-    @Query("Select * from Movie order by movieName")
+    @Query("Select * from Movie order by movieId")
     LiveData<List<Movie>>getAllMovies();
+
+    @Query("select * from Movie where movieName = :name")
+    LiveData<List<Movie>>getMovieByName(String name);
 }

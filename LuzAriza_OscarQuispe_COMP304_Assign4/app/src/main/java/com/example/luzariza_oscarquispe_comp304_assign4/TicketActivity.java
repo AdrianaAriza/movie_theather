@@ -1,13 +1,17 @@
 package com.example.luzariza_oscarquispe_comp304_assign4;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -19,6 +23,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class TicketActivity extends AppCompatActivity {
@@ -36,9 +42,12 @@ public class TicketActivity extends AppCompatActivity {
     Ticket ticket;
     Movie movie;
     User user;
+    Integer userId;
+    String movieName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket);
 
@@ -47,9 +56,10 @@ public class TicketActivity extends AppCompatActivity {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         ticket = new Ticket();
-        movie = new Movie();
         user = new User();
 
+        SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
+        userId = preferences.getInt("custId", -1);
         ticketViewModel.getInsertResult().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer result) {
@@ -64,17 +74,14 @@ public class TicketActivity extends AppCompatActivity {
 
         Spinner spin = (Spinner) findViewById(R.id.m_spinner);
         spin.setSelection(-1);
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
-                if(pos>0){
+                    /*
                     movie.setMovieName(adapterView.getItemAtPosition(pos).toString());
-                    movieViewModel.insert(movie);
-                    SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("MovieName",adapterView.getItemAtPosition(pos).toString());
-                    editor.commit();
-                }
+                    movieViewModel.insert(movie);*/
+                movieName = adapterView.getItemAtPosition(pos).toString();
+                getMovie(movieName);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -151,6 +158,8 @@ public class TicketActivity extends AppCompatActivity {
             editor.commit();
             ticket.setCustId(user.getCustId());
             ticket.setMovieId(movie.getMovieId());
+            ticket.setMovieName(movie.getMovieName());
+            ticket.setCustId(userId);
             ticketViewModel.insert(ticket);
             Intent intent = new Intent(this, CheckoutActivity.class);
             startActivity(intent);
@@ -164,5 +173,22 @@ public class TicketActivity extends AppCompatActivity {
         editor.putString("session", "True");
         editor.commit();
         finish();
+    }
+
+    public void getMovie(String name){
+        movieViewModel.getMovieByName(movieName).observe(this, new Observer<List<Movie>>() {
+            @Override
+            public void onChanged(@Nullable List<Movie> movieList) {
+                SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("MovieName", name);
+                editor.commit();
+                try {
+                    movie = movieList.get(0);
+                }catch (Exception e){
+                    Toast.makeText(TicketActivity.this, "SYSTEM ERROR: MOVIE NOT FOUND", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }

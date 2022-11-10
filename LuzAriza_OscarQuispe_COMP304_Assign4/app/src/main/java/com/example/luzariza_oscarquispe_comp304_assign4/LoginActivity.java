@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         emailText = findViewById(R.id.email);
         password = findViewById(R.id.password);
 
-         userViewModel.getPasswordByEmail(emailText.getText().toString()).observe(this, new Observer<List<User>>() {
+         userViewModel.getUserByEmail(emailText.getText().toString()).observe(this, new Observer<List<User>>() {
              @Override
              public void onChanged(@Nullable List<User> userList) {
                  SharedPreferences preferences = getSharedPreferences("PrefFile", MODE_PRIVATE);
@@ -53,9 +53,15 @@ public class LoginActivity extends AppCompatActivity {
                      if (Objects.equals(output, password.getText().toString())) {
                          //saving movie information in shared file
                          editor.putString("session", "True");
-                         editor.putString("userName", user.getName());
                          editor.putInt("custId", user.getCustId());
                          editor.putString("email", user.getEmail());
+                         editor.putString("password", user.getPassword());
+                         editor.putString("firstName", user.getFirstName());
+                         editor.putString("lastName", user.getLastName());
+                         editor.putString("address", user.getAddress());
+                         editor.putString("city", user.getCity());
+                         editor.putString("postalCode", user.getPostalCode());
+                         editor.putString("phone", user.getPhone());
                          editor.commit();
                          finish();
                      } else {

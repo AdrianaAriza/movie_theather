@@ -10,6 +10,7 @@ import java.util.List;
 public class TicketRepository {
     private final TicketDao ticketDao;
     private MutableLiveData<Integer> insertResult = new MutableLiveData<>();
+    private MutableLiveData<Integer> deleteResult = new MutableLiveData<>();
     private LiveData<List<Ticket>> ticketsList;
     //
     public TicketRepository(Context context) {
@@ -17,20 +18,27 @@ public class TicketRepository {
         AppDatabase db = AppDatabase.getInstance(context);
         //create an interface object
         ticketDao = db.ticketDao();
-        //call interface method
-        ticketsList = ticketDao.getAllTickets();
+
     }
     // returns query results as LiveData object
-    LiveData<List<Ticket>> getAllTickets() {
+    LiveData<List<Ticket>> getTicketsByUser(Integer userId) {
+        //call interface method
+        ticketsList = ticketDao.getTicketsByUser(userId);
         return ticketsList;
     }
     //inserts a ticket asynchronously
     public void insert(Ticket ticket) {
         insertAsync(ticket);
     }
+    public void delete(Ticket ticket) {
+        deleteAsync(ticket);
+    }
     // returns insert results as LiveData object
     public LiveData<Integer> getInsertResult() {
         return insertResult;
+    }
+    public LiveData<Integer> getDeleteResult() {
+        return deleteResult;
     }
 
     private void insertAsync(final Ticket ticket) {
@@ -42,6 +50,19 @@ public class TicketRepository {
                     insertResult.postValue(1);
                 } catch (Exception e) {
                     insertResult.postValue(0);
+                }
+            }
+        }).start();
+    }
+    private void deleteAsync(final Ticket ticket) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    ticketDao.delete(ticket);
+                    deleteResult.postValue(1);
+                } catch (Exception e) {
+                    deleteResult.postValue(0);
                 }
             }
         }).start();

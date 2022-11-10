@@ -11,7 +11,6 @@
     <string name="snuti"># of tickets</string>
 
     <string-array name="lmovies">
-        <item>Select a Movie</item>
         <item>End Game Avengers</item>
         <item>Dragon Ball Z</item>
         <item>Impossible Mission 6</item>

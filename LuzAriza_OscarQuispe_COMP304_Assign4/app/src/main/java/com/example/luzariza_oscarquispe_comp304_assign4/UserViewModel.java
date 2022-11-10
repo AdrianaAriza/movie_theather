@@ -15,7 +15,7 @@ public class UserViewModel extends AndroidViewModel {
     private UserRepository userRepository;
     private androidx.lifecycle.LiveData<Integer> insertResult;
     private androidx.lifecycle.LiveData<List<User>> allUsers;
-    private androidx.lifecycle.LiveData<List<User>> password;
+    private androidx.lifecycle.LiveData<List<User>> user;
     private androidx.lifecycle.LiveData<Integer> updateResult;
     //
     public UserViewModel(@NonNull Application application) {
@@ -38,14 +38,12 @@ public class UserViewModel extends AndroidViewModel {
         return insertResult;
     }
     //
-    public androidx.lifecycle.LiveData<Integer> getUpdateResult() {
-        return updateResult;
-    }
+    public androidx.lifecycle.LiveData<Integer> getUpdateResult() {return updateResult; }
     //returns query results as live data object
     LiveData<List<User>> getAllUsers() { return allUsers; }
 
-    LiveData<List<User>> getPasswordByEmail(String email){
-        password = userRepository.getPasswordByEmail(email);
-        return password;
+    LiveData<List<User>> getUserByEmail(String email){
+        user = userRepository.getUserByEmail(email);
+        return user;
     }
 }

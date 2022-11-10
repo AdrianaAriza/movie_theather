@@ -36,7 +36,7 @@ public class User {
 
     public int getId() { return custId; }
     public void setId(int id) { this.custId = id; }
-    public String getName() { return firstName; }
+
     public void setName(String name) { this.firstName = name; }
 
     public int getCustId() {

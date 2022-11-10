@@ -10,20 +10,20 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="65dp"
-        android:layout_marginStart="115dp"
+        android:layout_marginStart="113dp"
         android:layout_marginTop="10dp"
         android:onClick="goToLogin"
         android:text="SIGN IN / SIGN UP"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/book" />
+        app:layout_constraintTop_toBottomOf="@+id/tickets" />
 
     <Button
         android:id="@+id/book"
         android:layout_width="226dp"
         android:layout_height="65dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="400dp"
         android:onClick="goToMovie"
         android:text="BOOK A TICKET"
         android:textSize="16dp"
@@ -32,9 +32,9 @@
 
     <Button
         android:id="@+id/update_profile"
-        android:layout_width="wrap_content"
+        android:layout_width="226dp"
         android:layout_height="65dp"
-        android:layout_marginStart="117dp"
+        android:layout_marginStart="92dp"
         android:onClick="goToUpdate"
         android:text="UPDATE PROFILE"
         android:textSize="16dp"
@@ -52,15 +52,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/tickets"
+        android:layout_width="226dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="10dp"
+        android:onClick="showTickets"
+        android:text="MY TICKETS"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/book" />
+
+    <Button
         android:id="@+id/signOut"
         android:layout_width="wrap_content"
         android:layout_height="65dp"
-        android:layout_marginStart="146dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="10dp"
         android:onClick="signOut"
         android:text="SIGN OUT"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,6 @@ public class UserRepository {
     private MutableLiveData<Integer> insertResult = new MutableLiveData<>();
     private MutableLiveData<Integer> updateResult = new MutableLiveData<>();
     private LiveData<List<User>> usersList;
-    private LiveData<List<User>> password;
 
     //
     public UserRepository(Context context) {
@@ -30,8 +29,8 @@ public class UserRepository {
         return usersList;
     }
     // returns query results as LiveData object
-    public LiveData<List<User>> getPasswordByEmail(String email) {
-        return userDao.getPasswordByEmail(email);
+    public LiveData<List<User>> getUserByEmail(String email) {
+        return userDao.getUserByEmail(email);
     }
     //inserts a user asynchronously
     public void insert(User user) {
@@ -45,9 +44,7 @@ public class UserRepository {
     public LiveData<Integer> getInsertResult() {
         return insertResult;
     }
-    public LiveData<Integer> getUpdateResult() {
-        return updateResult;
-    }
+    public LiveData<Integer> getUpdateResult() { return updateResult; }
 
     private  void insertAsync(final User user) {
 

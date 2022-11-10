@@ -14,6 +14,7 @@ public class MovieViewModel extends AndroidViewModel {
     private MovieRepository movieRepository;
     private androidx.lifecycle.LiveData<Integer> insertResult;
     private androidx.lifecycle.LiveData<List<Movie>> allMovies;
+    private androidx.lifecycle.LiveData<List<Movie>> movie;
     //
     public MovieViewModel(@NonNull Application application) {
         super(application);
@@ -32,5 +33,9 @@ public class MovieViewModel extends AndroidViewModel {
     //returns query results as live data object
     LiveData<List<Movie>> getAllMovies() {
         return allMovies;
+    }
+    LiveData<List<Movie>> getMovieByName(String name) {
+        movie = movieRepository.getMovieByName(name);
+        return movie;
     }
 }

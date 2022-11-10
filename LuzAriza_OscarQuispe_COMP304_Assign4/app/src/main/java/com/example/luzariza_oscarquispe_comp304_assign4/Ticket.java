@@ -14,6 +14,16 @@ public class Ticket {
     private int numbOfTickets;
     private double price;
 
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    private String movieName;
+
     public int getTicketId() {
         return ticketId;
     }

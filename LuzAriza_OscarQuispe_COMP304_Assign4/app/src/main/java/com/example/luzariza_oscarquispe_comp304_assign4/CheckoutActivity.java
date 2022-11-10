@@ -19,27 +19,27 @@ public class CheckoutActivity extends AppCompatActivity {
         SharedPreferences myPref = getSharedPreferences("PrefFile", 0);
         String fname = myPref.getString("userName","");
         TextView tView1 = (TextView)findViewById(R.id.fn);
-        tView1.setText("Customer Name: " +fname);
+        tView1.setText("Customer Name: " + fname);
 
         String emai = myPref.getString("email","");
         TextView tView4 = (TextView)findViewById(R.id.em);
-        tView4.setText("Customer Email: " +emai);
+        tView4.setText("Customer Email: " + emai);
 
         String mona=myPref.getString("MovieName","");
         TextView txtView1=findViewById(R.id.movien);
-        txtView1.setText("Movie Name: " +mona);
+        txtView1.setText("Movie Name: " + mona);
 
         String stime=myPref.getString("ShowTime","");
         TextView txtView2=findViewById(R.id.shti);
-        txtView2.setText("Show time: " +stime);
+        txtView2.setText("Show time: " + stime);
 
         String sdate=myPref.getString("ShowDate","");
         TextView txtView3=findViewById(R.id.shda);
-        txtView3.setText("Show Date: " +sdate);
+        txtView3.setText("Show Date: " + sdate);
 
         String prict=myPref.getString("Price","");
         TextView txtView4=findViewById(R.id.pt);
-        txtView4.setText("Price: $" +prict);
+        txtView4.setText("Price: $" + prict);
     }
     public void backToMain(View view){
         Intent main = new Intent(CheckoutActivity.this, MainActivity.class);
