@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F1D684"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:srcCompat="@drawable/loci"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/login"
@@ -13,8 +21,8 @@
         android:layout_marginStart="113dp"
         android:layout_marginTop="10dp"
         android:onClick="goToLogin"
-        android:text="SIGN IN / SIGN UP"
-        android:textSize="16dp"
+        android:text="@string/tx1m"
+        android:textSize="@dimen/stxmain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tickets" />
 
@@ -25,8 +33,8 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="400dp"
         android:onClick="goToMovie"
-        android:text="BOOK A TICKET"
-        android:textSize="16dp"
+        android:text="@string/tx2m"
+        android:textSize="@dimen/stxmain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,8 +44,8 @@
         android:layout_height="65dp"
         android:layout_marginStart="92dp"
         android:onClick="goToUpdate"
-        android:text="UPDATE PROFILE"
-        android:textSize="16dp"
+        android:text="@string/tx3m"
+        android:textSize="@dimen/stxmain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/login" />
 
@@ -47,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="40dp"
-        android:textSize="26dp"
+        android:textSize="@dimen/stxgr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,8 +66,8 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="10dp"
         android:onClick="showTickets"
-        android:text="MY TICKETS"
-        android:textSize="16dp"
+        android:text="@string/tx4m"
+        android:textSize="@dimen/stxmain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/book" />
 
@@ -70,8 +78,8 @@
         android:layout_marginStart="147dp"
         android:layout_marginTop="10dp"
         android:onClick="signOut"
-        android:text="SIGN OUT"
-        android:textSize="16dp"
+        android:text="@string/tx5m"
+        android:textSize="@dimen/stxmain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 

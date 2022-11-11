@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".TicketActivity">
 
+    <TextView
+        android:id="@+id/txTi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/txtTi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Spinner
         android:id="@+id/m_spinner"
         android:layout_width="wrap_content"
@@ -68,7 +78,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/ticketsadult"
         app:layout_constraintStart_toEndOf="@+id/ticketsadult"
         app:layout_constraintTop_toTopOf="@+id/ticketsadult"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintVertical_bias="0.333"
+        android:autofillHints="" />
     <CheckBox
         android:id="@+id/ticketsadult"
         android:layout_width="wrap_content"
@@ -90,7 +101,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/ticketschild"
         app:layout_constraintStart_toEndOf="@+id/ticketschild"
         app:layout_constraintTop_toTopOf="@+id/ticketschild"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:autofillHints="" />
     <CheckBox
         android:id="@+id/ticketschild"
         android:layout_width="wrap_content"
@@ -108,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="272dp"
-        android:text="Adult: $10.99 - Children: $7.99"
+        android:text="@string/txtpr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,7 +150,7 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="392dp"
         android:onClick="onClickPrint"
-        android:text="Print"
+        android:text="@string/tbtp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticketschild" />
 
@@ -149,7 +161,7 @@
         android:layout_marginStart="220dp"
         android:layout_marginTop="392dp"
         android:onClick="onClickCancel"
-        android:text="Cancel"
+        android:text="@string/tbtc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ticketschild" />
 

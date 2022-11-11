@@ -1,14 +1,42 @@
 <resources>
     <string name="app_name">LuzAriza_OscarQuispe_COMP304_Assign4</string>
+    <string name="txtchk">Movie Tickets Details</string>
+    <string name="txtTi">Select a Movie</string>
+
+    <string name="tx1m">SIGN IN / SIGN UP</string>
+    <string name="tx2m">BOOK A TICKET</string>
+    <string name="tx3m">UPDATE PROFILE</string>
+    <string name="tx4m">MY TICKETS</string>
+    <string name="tx5m">SIGN OUT</string>
+
+    <string name="tx1rg">First Name</string>
+    <string name="tx2rg">Last Name</string>
+    <string name="tx3rg">Address</string>
+    <string name="tx4rg">City</string>
+    <string name="tx5rg">Postal Code</string>
+    <string name="tx6rg">Email</string>
+    <string name="tx7rg">Phone</string>
+    <string name="tx8rg">Password</string>
+    <string name="tx9rg">Confirm Password</string>
+    <string name="bntxrg">Register</string>
+
+    <string name="tx1ud">Password Confirmation</string>
+    <string name="bntxud">Update</string>
 
     <string name="stime1">11:50</string>
     <string name="stime2">14:15</string>
     <string name="stime3">16:45</string>
     <string name="stime4">18:50</string>
 
+    <string name="txt1">Login</string>
+    <string name="txt2">Register</string>
+    <string name="txt3">User/Email</string>
+    <string name="txt4">Password</string>
+
     <string name="stta">Adults</string>
     <string name="sttc">Children</string>
     <string name="snuti"># of tickets</string>
+    <string name="txtpr">Adult: $10.99 - Children: $7.99</string>
 
     <string-array name="lmovies">
         <item>End Game Avengers</item>
@@ -17,6 +45,14 @@
         <item>Space Jam</item>
     </string-array>
 
+    <string name="tbtp">PRINT</string>
+    <string name="tbtc">Cancel</string>
+    <string name="tbtf">FINISH</string>
+
     <dimen name="sinfo">20sp</dimen>
+    <dimen name="smlf">250sp</dimen>
+    <dimen name="smt">25sp</dimen>
+    <dimen name="stxmain">16sp</dimen>
+    <dimen name="stxgr">26sp</dimen>
 
 </resources>
