@@ -15,8 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class ShowsTicketsActivity extends AppCompatActivity {
 
@@ -74,17 +78,34 @@ public class ShowsTicketsActivity extends AppCompatActivity {
         TextView number = new TextView(this);
         number.setText("Amount of Tickets: " + String.valueOf(ticket.getNumbOfTickets()));
         linearLayout.addView(number);
-        Button cancel = new Button(this);
-        cancel.setText("CANCEL TICKET");
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ticketViewModel.delete(ticket);
-                finish();
-                startActivity(getIntent());
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+        try{
+            Date date = sf.parse(ticket.getShowDate());
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date now = new Date();
+            System.out.println(dateFormat.format(date));
+            long diff = date.getTime() - now.getTime();
+            TimeUnit time = TimeUnit.DAYS;
+            long difference = time.convert(diff, TimeUnit.MILLISECONDS);
+            System.out.println("The difference in days is : "+difference);
+            if(difference >= 2){
+                Button cancel = new Button(this);
+                cancel.setText("CANCEL TICKET");
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ticketViewModel.delete(ticket);
+                        finish();
+                        startActivity(getIntent());
+                    }
+                });
+                linearLayout.addView(cancel);
             }
-        });
-        linearLayout.addView(cancel);
+        } catch (Exception e){
+            Log.d("Error", String.valueOf(e));
+        }
+
+
         layout.addView(linearLayout);
     }
 }
