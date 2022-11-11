@@ -75,9 +75,9 @@ public class RegisterActivity extends AppCompatActivity {
         String pwd = password.getText().toString();
         passwordConfirmation = findViewById(R.id.passwordConfirmation);
         String pwdConfirmation = passwordConfirmation.getText().toString();
-        if(!fName.equals("") || !lName.equals("") || !add.equals("") ||
-                !ct.equals("") || !pCode.equals("") || !mail.equals("") || !phoneNumber.equals("")
-                || !pwd.equals(""))
+        if(!fName.equals("") & !lName.equals("") & !add.equals("") &
+                !ct.equals("") & !pCode.equals("") & !mail.equals("") & !phoneNumber.equals("")
+                & !pwd.equals(""))
         {
             if(pwd.equals(pwdConfirmation)){
                 user = new User(pwd, fName, lName, add, ct, pCode, mail, phoneNumber);
