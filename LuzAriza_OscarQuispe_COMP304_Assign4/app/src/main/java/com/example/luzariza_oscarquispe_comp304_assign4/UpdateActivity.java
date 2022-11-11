@@ -126,7 +126,6 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Integer result) {
                 if (result == 1) {
-                    Toast.makeText(UpdateActivity.this, "User successfully updated", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     Toast.makeText(UpdateActivity.this, "Error updating user", Toast.LENGTH_SHORT).show();
