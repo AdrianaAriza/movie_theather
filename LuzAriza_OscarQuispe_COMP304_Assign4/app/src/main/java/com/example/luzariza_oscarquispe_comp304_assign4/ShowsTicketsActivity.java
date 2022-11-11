@@ -78,17 +78,17 @@ public class ShowsTicketsActivity extends AppCompatActivity {
         TextView number = new TextView(this);
         number.setText("Amount of Tickets: " + String.valueOf(ticket.getNumbOfTickets()));
         linearLayout.addView(number);
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         try{
-            Date date = sf.parse(ticket.getShowDate());
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date date = sf.parse(ticket.getShowDate() + " " + ticket.getShowTime());
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
             Date now = new Date();
-            System.out.println(dateFormat.format(date));
+            System.out.println(dateFormat.format(now));
             long diff = date.getTime() - now.getTime();
-            TimeUnit time = TimeUnit.DAYS;
-            long difference = time.convert(diff, TimeUnit.MILLISECONDS);
-            System.out.println("The difference in days is : "+difference);
-            if(difference >= 2){
+            TimeUnit time = TimeUnit.HOURS;
+            long difference = (time.convert(diff, TimeUnit.MILLISECONDS)) - 4;
+            Log.d("DIFFERENCE", String.valueOf(difference));
+            if(difference > 48){
                 Button cancel = new Button(this);
                 cancel.setText("CANCEL TICKET");
                 cancel.setOnClickListener(new View.OnClickListener() {
